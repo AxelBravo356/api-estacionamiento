@@ -20,14 +20,14 @@ import com.ipn.mx.apiestacionamiento.modelo.services.UsuarioService;
 
 @CrossOrigin(origins= {"*"})
 @RestController
-@RequestMapping("/api/usuarios")
+@RequestMapping("/api")
 public class UsuarioController {
 
 	@Autowired
 	private UsuarioService service;
 	
 	
-	@GetMapping("/api")
+	@GetMapping("/usuarios")
 	public List<Usuario> readAll(){
 		return service.findAll();
 	}
@@ -57,7 +57,8 @@ public class UsuarioController {
 		u.setNombreUsuario(usuario.getNombreUsuario());
 		u.setPaternoUsuario(usuario.getPaternoUsuario());
 		u.setMaternoUsuario(usuario.getMaternoUsuario());
-		u.setIdMoto(usuario.getIdMoto());
+		//u.setIdMoto(usuario.getIdMoto());
+		u.setIdMoto(usuario.getMoto());
 		/*
 		p.setNombreProducto(producto.getNombreProducto());
 		p.setDescripcionProducto(producto.getDescripcionProducto());

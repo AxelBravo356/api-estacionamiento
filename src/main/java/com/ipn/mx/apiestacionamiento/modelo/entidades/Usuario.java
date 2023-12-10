@@ -2,11 +2,15 @@ package com.ipn.mx.apiestacionamiento.modelo.entidades;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -42,6 +46,13 @@ public class Usuario implements Serializable {
 	@Column(name="maternoUsuario", length=50, nullable = false)
 	private String maternoUsuario;
 	
-	@Column(name="idMoto", nullable = false)
-	private int idMoto;
+	
+	@OneToOne
+	@JoinColumn(name="idMoto")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private Moto moto;
+	
+	public void setIdMoto(Moto moto) {
+		this.moto = moto;
+	}
 }
