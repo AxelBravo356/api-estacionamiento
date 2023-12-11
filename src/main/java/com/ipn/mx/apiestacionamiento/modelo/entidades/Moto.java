@@ -27,7 +27,7 @@ public class Moto implements Serializable{/**
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idMoto;
+	private long idMoto;
 	
 	@NotBlank(message="La marca es un campo obligatorio")
 	@Size(min=4, max=45, message="La marca de estar entre 4 y 45 caracteres.")

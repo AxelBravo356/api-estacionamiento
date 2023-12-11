@@ -22,7 +22,7 @@ public class SistemaControl implements Serializable{/**
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idSistemaControl;
+	private long idSistemaControl;
 	
 	@NotBlank(message="El nombre del acceso es un campo obligatorio")
 	@Size(min=4, max=50, message="El nombre debe de estar entre 4 y 50 caracteres.")

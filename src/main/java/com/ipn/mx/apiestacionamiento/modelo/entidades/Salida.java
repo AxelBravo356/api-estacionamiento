@@ -22,7 +22,7 @@ public class Salida implements Serializable{/**
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idSalida;
+	private long idSalida;
 	
 	@NotBlank(message="time: campo obligatorio")
 	@Size(min=4, max=10, message="La fecha de estar entre 4 y 10 caracteres.")

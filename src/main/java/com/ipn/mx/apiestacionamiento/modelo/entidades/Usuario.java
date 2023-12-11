@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idUsuario;
+	private long idUsuario;
 	
 	@NotBlank(message="El nombre del usuario es obligatorio")
 	@Size(min=4, max=50, message="El nombre de estar entre 4 y 50 caracteres.")
