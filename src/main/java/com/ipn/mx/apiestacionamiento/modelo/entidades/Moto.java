@@ -2,11 +2,16 @@ package com.ipn.mx.apiestacionamiento.modelo.entidades;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -21,7 +26,7 @@ public class Moto implements Serializable{/**
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idMoto;
 	
 	@NotBlank(message="La marca es un campo obligatorio")
@@ -45,5 +50,13 @@ public class Moto implements Serializable{/**
 	@Column(name="placas", length=45, nullable = false)
 	private String placasMoto;
 	
+	@ManyToOne(fetch=FetchType.LAZY, optional=false)
+	@JoinColumn(name="idUsuario")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private Usuario idUsuario;
+	
+	public void setIdUsuario(Usuario usuario) {
+		this.idUsuario = usuario;
+	}
 	
 }

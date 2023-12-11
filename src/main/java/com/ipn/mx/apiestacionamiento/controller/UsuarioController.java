@@ -34,6 +34,7 @@ public class UsuarioController {
 	
 	@GetMapping("/usuarios/{id}")
 	public Usuario read(@PathVariable Long id) {
+		System.out.print(id);
 		return service.findById(id);
 	}
 	
@@ -58,7 +59,7 @@ public class UsuarioController {
 		u.setPaternoUsuario(usuario.getPaternoUsuario());
 		u.setMaternoUsuario(usuario.getMaternoUsuario());
 		//u.setIdMoto(usuario.getIdMoto());
-		u.setIdMoto(usuario.getMoto());
+		//u.setMotos(usuario.getMotos());
 		/*
 		p.setNombreProducto(producto.getNombreProducto());
 		p.setDescripcionProducto(producto.getDescripcionProducto());

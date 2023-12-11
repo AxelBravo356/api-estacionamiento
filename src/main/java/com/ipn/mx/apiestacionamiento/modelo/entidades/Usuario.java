@@ -1,23 +1,26 @@
 package com.ipn.mx.apiestacionamiento.modelo.entidades;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
+//import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+//import lombok.Data;
+import lombok.Getter;
 
 
-@Data
+//@Data
+@Getter
 @Entity
 @Table(name="Usuarios")
 public class Usuario implements Serializable {
@@ -28,7 +31,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idUsuario;
 	
 	@NotBlank(message="El nombre del usuario es obligatorio")
@@ -46,13 +49,32 @@ public class Usuario implements Serializable {
 	@Column(name="maternoUsuario", length=50, nullable = false)
 	private String maternoUsuario;
 	
-	
-	@OneToOne
-	@JoinColumn(name="idMoto")
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	private Moto moto;
-	
-	public void setIdMoto(Moto moto) {
-		this.moto = moto;
+	@OneToMany(mappedBy ="idUsuario", cascade = CascadeType.ALL)
+	private Set<Moto> motos = new HashSet<>();
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+	public void setPaternoUsuario(String paternoUsuario) {
+		this.paternoUsuario = paternoUsuario;
+	}
+
+	public void setMaternoUsuario(String maternoUsuario) {
+		this.maternoUsuario = maternoUsuario;
+	}
+
+	public void setMotos(Set<Moto> motos) {
+		this.motos = motos;
+		for (Moto moto: motos) {
+			moto.setIdUsuario(this);
+		}
+	}
+	
+	
+	
 }
