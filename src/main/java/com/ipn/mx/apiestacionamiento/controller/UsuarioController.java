@@ -30,55 +30,6 @@ import com.ipn.mx.apiestacionamiento.modelo.services.UsuarioService;
 @RequestMapping("/api")
 public class UsuarioController {
 
-<<<<<<< HEAD
-	@Autowired
-	private UsuarioService service;
-	
-	
-	@GetMapping("/usuarios")
-	public List<Usuario> readAll(){
-		return service.findAll();
-	}
-	
-	@GetMapping("/usuarios/{id}")
-	public Usuario read(@PathVariable Long id) {
-		System.out.print(id);
-		return service.findById(id);
-	}
-	
-	@DeleteMapping("/usuarios/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
-		service.delete(id);
-	}
-	
-	@PostMapping("/usuario")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario save(@RequestBody Usuario usuario) {
-		return service.save(usuario);
-	}
-	
-	@PutMapping("/usuarios/{id}")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario update(@RequestBody Usuario usuario, @PathVariable Long id) {
-		Usuario u = service.findById(id);
-		
-		u.setNombreUsuario(usuario.getNombreUsuario());
-		u.setPaternoUsuario(usuario.getPaternoUsuario());
-		u.setMaternoUsuario(usuario.getMaternoUsuario());
-		//u.setIdMoto(usuario.getIdMoto());
-		//u.setMotos(usuario.getMotos());
-		/*
-		p.setNombreProducto(producto.getNombreProducto());
-		p.setDescripcionProducto(producto.getDescripcionProducto());
-		p.setExistencia(producto.getExistencia());
-		p.setIdCategoria(producto.getIdCategoria());
-		*/
-		return service.save(u);
-	}
-	
-	
-=======
     @Autowired
     private UsuarioService service;
 
@@ -192,7 +143,7 @@ public class UsuarioController {
             searchUser.setNombreUsuario(user.getNombreUsuario());
             searchUser.setPaternoUsuario(user.getPaternoUsuario());
             searchUser.setMaternoUsuario(user.getMaternoUsuario());
-            searchUser.setIdMoto(user.getMoto());
+            searchUser.setMotos(user.getMotos());
 
             updateUser = service.save(searchUser);
 
@@ -210,6 +161,4 @@ public class UsuarioController {
 
     }
 
-
->>>>>>> 588c3c87707c9a9ad0b456ec9f6f96300232ee3f
 }

@@ -2,14 +2,10 @@ package com.ipn.mx.apiestacionamiento.controller;
 
 import java.util.HashMap;
 import java.util.List;
-<<<<<<< HEAD
-=======
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.ipn.mx.apiestacionamiento.modelo.entidades.Usuario;
 import jakarta.validation.Valid;
->>>>>>> 588c3c87707c9a9ad0b456ec9f6f96300232ee3f
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
